@@ -34,7 +34,7 @@ export const Banner = (props: {
   return (
     <>
       <div id="mobile-banner">
-        <img className="banner-img" src={props.src} />
+        <img className="banner-img" src={props.src} width="50%" />
         <div className="banner-content">
           <div id={'main-heading'}>{props.headingText}</div>
           <div id={'sub-heading'}>{props.subHeadingText}</div>
@@ -53,11 +53,6 @@ export const Banner = (props: {
             {props.actionComponent}
           </div>
           {props.children}
-          <div className="powered-by">
-            <span>
-              POWERED BY <b>METAPLEX</b>
-            </span>
-          </div>
         </div>
       </div>
     </>
