@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Menu, Modal } from 'antd';
 import { useWallet } from '@solana/wallet-adapter-react';
@@ -11,7 +11,7 @@ import {
   CurrentUserBadge,
   CurrentUserBadgeMobile,
 } from '../CurrentUserBadge';
-import { ConnectButton } from '@oyster/common';
+import { ConnectButton, useMeta } from '@oyster/common';
 import { MobileNavbar } from '../MobileNavbar';
 
 const getDefaultLinkActions = (connected: boolean) => {
@@ -51,7 +51,7 @@ export const MetaplexMenu = () => {
     return (
       <>
         <Modal
-          title={<img src={'/metaplex-logo.svg'} />}
+          title={<img src={'./hdr-helios.png'} />}
           visible={isModalVisible}
           footer={null}
           className={'modal-box'}
@@ -110,13 +110,27 @@ export const MetaplexMenu = () => {
 export const LogoLink = () => {
   return (
     <Link to={`/`}>
-      <img src={'/metaplex-logo.svg'} />
+      <img src={'/hdr-helios.png'} width={64} />
     </Link>
   );
 };
 
+const btnStyle: React.CSSProperties = {
+  border: 'none',
+  height: 40,
+};
+
 export const AppBar = () => {
-  const { connected } = useWallet();
+  const { publicKey, connected } = useWallet();
+  const { whitelistedCreatorsByCreator, store } = useMeta();
+  const pubkey = publicKey?.toBase58() || '';
+
+  const canCreate = useMemo(() => {
+    return (
+      store?.info?.public ||
+      whitelistedCreatorsByCreator[pubkey]?.info?.activated
+    );
+  }, [pubkey, whitelistedCreatorsByCreator, store]);
   return (
     <>
       <MobileNavbar />
@@ -135,6 +149,30 @@ export const AppBar = () => {
           )}
           {connected && (
             <>
+              <div
+                style={{
+                  display: 'flex',
+                }}
+              >
+                {canCreate && (
+                  <>
+                    <Link to={`/art/create`} style={{ width: '100%' }}>
+                      <Button
+                        className="metaplex-button-default"
+                        style={btnStyle}
+                      >
+                        Create
+                      </Button>
+                    </Link>
+                    &nbsp;&nbsp;
+                  </>
+                )}
+                <Link to={`/auction/create/0`} style={{ width: '100%' }}>
+                  <Button className="metaplex-button-default" style={btnStyle}>
+                    Sell
+                  </Button>
+                </Link>
+              </div>
               <CurrentUserBadge
                 showBalance={false}
                 showAddress={true}
