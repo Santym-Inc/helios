@@ -77,7 +77,7 @@ export const mintNFT = async (
   connection: Connection,
   wallet: WalletSigner | undefined,
   endpoint: ENDPOINT_NAME,
-  files: File[],
+  files: File[] | String[],
   metadata: {
     name: string;
     symbol: string;
@@ -124,7 +124,6 @@ export const mintNFT = async (
   };
 
   const realFiles: File[] = [
-    ...files,
     new File([JSON.stringify(metadataContent)], RESERVED_METADATA),
   ];
 
