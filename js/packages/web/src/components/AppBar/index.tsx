@@ -12,7 +12,6 @@ import {
   CurrentUserBadgeMobile,
 } from '../CurrentUserBadge';
 import { ConnectButton, useMeta } from '@oyster/common';
-import { MobileNavbar } from '../MobileNavbar';
 
 const getDefaultLinkActions = (connected: boolean) => {
   return [
@@ -133,12 +132,10 @@ export const AppBar = () => {
   }, [pubkey, whitelistedCreatorsByCreator, store]);
   return (
     <>
-      <MobileNavbar />
       <div id="desktop-navbar">
         <div className="app-left">
           <LogoLink />
           &nbsp;&nbsp;&nbsp;
-          <MetaplexMenu />
         </div>
         <div className="app-right">
           {!connected && (
@@ -167,11 +164,6 @@ export const AppBar = () => {
                     &nbsp;&nbsp;
                   </>
                 )}
-                <Link to={`/auction/create/0`} style={{ width: '100%' }}>
-                  <Button className="metaplex-button-default" style={btnStyle}>
-                    Sell
-                  </Button>
-                </Link>
               </div>
               <CurrentUserBadge
                 showBalance={false}
