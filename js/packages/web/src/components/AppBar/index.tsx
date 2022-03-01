@@ -12,6 +12,7 @@ import {
   CurrentUserBadgeMobile,
 } from '../CurrentUserBadge';
 import { ConnectButton, useMeta } from '@oyster/common';
+import { MobileNavbar } from '../MobileNavbar';
 
 const getDefaultLinkActions = (connected: boolean) => {
   return [
@@ -132,10 +133,12 @@ export const AppBar = () => {
   }, [pubkey, whitelistedCreatorsByCreator, store]);
   return (
     <>
+      <MobileNavbar />
       <div id="desktop-navbar">
         <div className="app-left">
           <LogoLink />
           &nbsp;&nbsp;&nbsp;
+          <MetaplexMenu />
         </div>
         <div className="app-right">
           {!connected && (
