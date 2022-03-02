@@ -1142,13 +1142,6 @@ const Congrats = (props: {
           <span>See it in your collection</span>
           <span>&gt;</span>
         </Button>
-        <Button
-          className="metaplex-button"
-          onClick={() => history.push('/auction/create')}
-        >
-          <span>Sell it via auction</span>
-          <span>&gt;</span>
-        </Button>
       </div>
       <Confetti />
     </>
