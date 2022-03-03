@@ -58,16 +58,6 @@ const UserActions = (props: { mobile?: boolean; onClick?: any }) => {
                 </Button>
               </Link>
             )}
-            <Link to={`/auction/create/0`}>
-              <Button
-                onClick={() => {
-                  props.onClick ? props.onClick() : null;
-                }}
-                className="black-btn"
-              >
-                Sell
-              </Button>
-            </Link>
           </div>
         ) : (
           <div
@@ -85,11 +75,6 @@ const UserActions = (props: { mobile?: boolean; onClick?: any }) => {
                 &nbsp;&nbsp;
               </>
             )}
-            <Link to={`/auction/create/0`} style={{ width: '100%' }}>
-              <Button className="metaplex-button-default" style={btnStyle}>
-                Sell
-              </Button>
-            </Link>
           </div>
         ))}
     </>
@@ -295,14 +280,6 @@ export const CurrentUserBadge = (props: {
                     marginBottom: 10,
                   }}
                 >
-                  <Button
-                    className="metaplex-button-default"
-                    onClick={() => setShowAddFundsModal(true)}
-                    style={btnStyle}
-                  >
-                    Add Funds
-                  </Button>
-                  &nbsp;&nbsp;
                   <Button
                     className="metaplex-button-default"
                     onClick={disconnect}
