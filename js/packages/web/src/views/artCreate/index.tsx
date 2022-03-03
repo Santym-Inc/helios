@@ -1135,9 +1135,7 @@ const Congrats = (props: {
         </Button>
         <Button
           className="metaplex-button"
-          onClick={() =>
-            history.push(`/art/${props.nft?.metadataAccount.toString()}`)
-          }
+          onClick={() => history.push(`/artworks`)}
         >
           <span>See it in your collection</span>
           <span>&gt;</span>
