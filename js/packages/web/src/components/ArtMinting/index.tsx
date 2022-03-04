@@ -143,6 +143,7 @@ export const ArtMinting = ({ id, onMint }: ArtMintingProps) => {
       {renderMintEdition && (
         <div>
           <Button
+            disabled={maxEditionsToMint === 0}
             type="primary"
             size="large"
             className="action-btn"
@@ -202,7 +203,7 @@ export const ArtMinting = ({ id, onMint }: ArtMintingProps) => {
               <InputNumber
                 type="number"
                 placeholder="1"
-                style={{ width: '100%' }}
+                style={{ width: '75%' }}
                 min={1}
                 max={maxEditionsToMint}
                 value={editions}
@@ -212,7 +213,7 @@ export const ArtMinting = ({ id, onMint }: ArtMintingProps) => {
             </Form.Item>
             <Form.Item
               style={{
-                width: '100%',
+                width: '75%',
                 flexDirection: 'column',
                 paddingTop: 30,
               }}
