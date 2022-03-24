@@ -173,6 +173,7 @@ export const AppBar = () => {
                 showAddress={true}
                 iconSize={24}
               />
+              <Notifications />
               <Cog />
             </>
           )}
