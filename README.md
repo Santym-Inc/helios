@@ -1,6 +1,6 @@
 ## Installing and Storefront Setup
 
-Clone the repo, specify `REACT_APP_STORE_OWNER_ADDRESS_ADDRESS` in the .env file and run
+Clone the repo, replace `REACT_APP_STORE_OWNER_ADDRESS_ADDRESS` in the .env file with your solana address and run
 
 ```bash
 $ git clone https://github.com/metaplex-foundation/metaplex.git
